@@ -42,9 +42,12 @@ var connection = mysql.createConnection({
 });
 
 connection.connect();
+data.use(connection);
 
-app.use('/api/*', api);
-app.use('/data/*', data);
+app.get('/data/insert/word', data.insertWord);
+app.get('/data/insert/example', data.insertExample);
+app.get('/data/dump/word', data.dumpWord);
+app.get('/data/dump/example', data.dumpExample);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));

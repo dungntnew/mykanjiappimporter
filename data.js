@@ -64,4 +64,12 @@ data.dumpWord = function(req, res, next){
 		else res.json(docs);
 	});
 };
+
+data.dumpExample = function(req, res, next){
+	connection.query('SELECT * FROM example', function(err, docs){
+		if (err) throw err;
+		else res.json(docs);
+	});
+};
+
 module.exports = data;
